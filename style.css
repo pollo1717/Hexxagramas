@@ -1,0 +1,125 @@
+* {
+  border: none;
+  margin: 0;
+  /* background-color: blue; */
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+}
+
+.content-hexa {
+  width: 80%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+}
+.contenTablaHexagram {
+  width: 60%;
+}
+/* class="tableHexagrams  tablaHexagramasNoMutantes" id="tableHexagrams" > */
+
+.tableHexagrams {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 1em;
+  margin: auto;
+}
+
+.contentInputs {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contentInputs > .contentInputsIntern {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+}
+
+.contentInputsIntern > input {
+  margin: 1em;
+  border: 1px solid red;
+  border-radius: 1em;
+  height: 25px;
+}
+
+.contentImgs {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+}
+.contentImgsComplete {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 1em;
+}
+
+.contentImgsComplete > img {
+  width: 93%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tablaHexagramasNoMutantes {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  border: 1px solid green;
+  border-radius: 1em;
+  margin: auto;
+}
+
+/* //cuando el exagrama no tiene mutante */
+.hexagramaListo {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20%;
+  background-color: green;
+  height: max-content;
+  padding: 2em;
+  border-radius: 3em;
+  box-shadow: 4px 2px 0px 2px grey;
+}
+
+.content-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ok-btn {
+  padding: 0.5em 3em;
+  text-align: center;
+  border-radius: 0.5em;
+  color: tomato;
+}
+
+.ok-btn:hover {
+  padding: 0.5em 3em;
+  text-align: center;
+  border-radius: 0.5em;
+  color: white;
+  background-color: tomato;
+}

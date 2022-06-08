@@ -1,34 +1,45 @@
 * {
   border: none;
   margin: 0;
-  /* background-color: blue; */
+  /* background: linear-gradient(to bottom right, blue, white); */
+}
+.contenedorPrincipal {
+  padding: 2em;
+  height: 100%;
+  background: linear-gradient(to bottom right, #f06543, white);
 }
 
 .hero {
   width: 100%;
   height: 100vh;
+  /* background: linear-gradient(to bottom right, #f06543, white); */
+  height: 100%;
 }
 
 .content-hexa {
-  width: 80%;
-  height: 300px;
   display: flex;
   flex-direction: row;
 }
 .contenTablaHexagram {
-  width: 60%;
+  width: 100%;
+  display: flex;
 }
 /* class="tableHexagrams  tablaHexagramasNoMutantes" id="tableHexagrams" > */
 
 .tableHexagrams {
-  width: 60%;
+  width: auto;
   display: flex;
   justify-content: center;
   flex-direction: column-reverse;
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid #2f4858;
   border-radius: 1em;
-  margin: auto;
+  margin: auto 0.5em;
+  transition: all linear 1s;
+}
+
+.tableHexagrams:hover {
+  background-color: #f06543;
 }
 
 .contentInputs {
@@ -54,10 +65,21 @@
 .contentImgs {
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 1em;
 }
+.contentImgs:hover {
+  width: 100%;
+  background-color: #09814a;
+  padding: 0.5em;
+}
+.contentImgsComplete:hover {
+  width: 100%;
+  background-color: #04a777;
+  padding: 0.5em;
+}
+
 .contentImgsComplete {
   width: 100%;
   display: flex;
@@ -68,7 +90,7 @@
 }
 
 .contentImgsComplete > img {
-  width: 93%;
+  width: auto;
   height: 20px;
   display: flex;
   justify-content: center;
@@ -122,4 +144,116 @@
   border-radius: 0.5em;
   color: white;
   background-color: tomato;
+}
+
+/* contiene los botones */
+.content-btns > button {
+  display: flex;
+  justify-content: space-around;
+  align-items: initial;
+  margin: 0.5em auto;
+}
+/* envia el exa del btn enviar */
+
+.AceptarHexa {
+  margin: auto;
+  height: 35px;
+  padding: 0.5em 3em;
+  color: white;
+  background-color: #04a777;
+  border-radius: 2em;
+}
+
+.AceptarHexa:hover {
+  height: 35px;
+  background-color: white;
+  color: green;
+  border: 1px solid #04a777;
+}
+
+/* btn y div de sig hexagrama */
+.sigHexagrama {
+  position: relative;
+  /* bottom: 0; */
+  display: none;
+  padding: 0 3em;
+}
+
+.sigHexagrama > button {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  margin: auto;
+  height: 35px;
+  padding: 0 3em;
+  color: white;
+  background-color: #04a777;
+  border-radius: 2em;
+}
+
+.sigHexagrama > button:hover {
+  margin: auto;
+  height: 35px;
+  padding: 0 3em;
+  background-color: white;
+  color: #04a777;
+  border: 1px solid #04a777;
+}
+
+/* contenedor de la imagen de tu hexagrama */
+.fatherContetTableImgHexagrama {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.contetTableImgHexagrama {
+  width: 100%;
+  margin: 4em auto;
+}
+.contetTableImgHexagrama > img {
+  width: 75%;
+  transition: width ease-in 1s;
+}
+.contetTableImgHexagrama > img:hover {
+  width: 85%;
+}
+
+/* contenedor de hexagramas partidos */
+
+.contentHexagramFinal {
+  width: 50%;
+  margin-left: 2em;
+}
+
+.exagramasx3 {
+  /* padding: 3em; */
+  margin: 1em;
+  transition-duration: 1000ms;
+  transition: background-color 1s ease-in-out;
+}
+
+.textHexagramaFinal {
+  font-weight: bold;
+  color: #33658a;
+}
+
+input:target {
+  background-color: #f06543;
+}
+
+h1 {
+  color: #33658a;
+}
+p {
+  color: #04a777;
+}
+.instru {
+  padding: 1em;
+  transition: all ease-in 1s;
+}
+
+.instru:hover {
+  padding: 3em;
 }

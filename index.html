@@ -8,7 +8,7 @@
     <title>Proyecto Hexagramas</title>
   </head>
   <body>
-    <div>
+    <div class="contenedorPrincipal">
       <div class="hexagramaListo" id="hexagramaListo">
         <h1>Este es tu hexagrama, no hay exagramas mutantes</h1>
         <div class="content-btn">
@@ -16,45 +16,51 @@
         </div>
       </div>
       <h1>Proyecto Web Hexagramas</h1>
-      <div class="hero">
+      <div class="hero" id="hero">
         <div class="content-hexa">
           <div class="contentInputs">
             <div class="contentInputsIntern">
-            <input
-              type="number"
-              min="2"
-              max="3"
-              id="Hexa1"
-              placeholder=" hexagrama 1"
-            />
-            <input
-              type="number"
-              min="2"
-              max="3"
-              id="Hexa2"
-              placeholder=" hexagrama 2"
-            />
-            <input
-              type="number"
-              min="2"
-              max="3"
-              id="Hexa3"
-              placeholder=" hexagrama 3"
-            />
-
-            <button id="AceptarHexa">Aceptar</button>
+              <input
+                type="number"
+                min="2"
+                max="3"
+                id="Hexa1"
+                placeholder=" hexagrama 1"
+              />
+              <input
+                type="number"
+                min="2"
+                max="3"
+                id="Hexa2"
+                placeholder=" hexagrama 2"
+              />
+              <input
+                type="number"
+                min="2"
+                max="3"
+                id="Hexa3"
+                placeholder=" hexagrama 3"
+              />
+              <div class="content-btns">
+                <button id="AceptarHexa" class="AceptarHexa">Aceptar</button>
+                <button id="borrarHexa" class="AceptarHexa">Borrar</button>
+                <button id="reiniciarHexa" class="AceptarHexa">
+                  reiniciar
+                </button>
+                <button id="aleatorioHexa" class="AceptarHexa">
+                  Aleatorio
+                </button>
+              </div>
+            </div>
           </div>
-          </div>
-          <div class="contenTablaHexagram">
-            <div class="tableHexagrams" id="tableHexagrams">
-              <!-- <div class="contentImgsComplete" id="contentImgsComplete"> -->
-              <!-- <img src="hexaComplete.png" width="100" /> -->
-              <!-- </div> -->
-              <!-- <div class="contentImgs" id="contentImgs"> -->
-              <!-- <img src="hexMiddle.png" width="45" />
+          <!-- <div class="contentImgsComplete" id="contentImgsComplete"> -->
+          <!-- <img src="hexaComplete.png" width="100" /> -->
+          <!-- </div> -->
+          <!-- <div class="contentImgs" id="contentImgs"> -->
+          <!-- <img src="hexMiddle.png" width="45" />
               <img src="hexaMiddle.png" width="45" height="10px" /> -->
-              <!-- </div> -->
-              <!-- <div class="contentImgs" id="contentImgs">
+          <!-- </div> -->
+          <!-- <div class="contentImgs" id="contentImgs">
                 <img src="hexMiddle.png" width="45" />
                 <img src="x.png" alt="" width="25" />
                 <img src="hexMiddle.png" width="45" height="10px" />
@@ -63,10 +69,39 @@
               <div class="contentImgs" id="contentImgs">
                 <img src="hexMiddle.png" width="45" />
                 <img src="o.png" alt="" width="25" />
-                <img src="hexMiddle.png" width="45" height="10px" /> -->
-              </div>
+                <img src="hexMiddle.png" width="45" height="10px" />
+              </div>-->
+
+          <div class="contenTablaHexagram" id="contenTablaHexagram">
+            <div class="sigHexagrama">
+              <button id="sigHexagramaBtn">Sig exagrama</button>
             </div>
+            <div class="tableHexagrams" id="tableHexagrams"></div>
           </div>
+        </div>
+        <div class="fatherContetTableImgHexagrama" id="fatherContetTableImgHexagrama">
+          <!-- <div class="contetTableImgHexagrama" id="contetTableImgHexagrama">
+            <img src="hexagramasTable.png" />
+          </div> -->
+          <div class="contentHexagramFinal" id="contentHexagramFinal">
+            <h3 class="textHexagramaFinal">Este es tu hexagrama Superior</h3>
+
+            <div class="tableHexagrams exagramasx3" id="tableHexagramsSuperior">
+              
+          </div>   
+          <h3 class="textHexagramaFinal">Este es tu hexagrama Inferior</h3>
+
+          <div class="tableHexagrams exagramasx3" id="tableHexagramsInferiror">
+
+        </div>  
+          </div>
+          <div class="instru">
+            <h1>Instrucciones</h1>
+            <p>tenemos <strong>hexagrama Superior</strong> y <strong>hexagrama Inferior</strong><br/> estos hexagramas los tienes que buscar en la trabla y <br/>asi encontarras tu elemento</p>
+          </div>
+        </div>
+
+      </div>
         </div>
       </div>
     </div>

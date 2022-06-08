@@ -1,6 +1,8 @@
+//------Los hexgaramas mutantes se transformaran en esto
 // 9 = ---o---  --> --- ---
 // 8= --- ---
 // 7= ------
+
 // 6= ---x---  -->  ------
 let data = {
   9: {
@@ -30,13 +32,38 @@ let dataHexa = {
   7: "hexaComplete.png",
   6: "hexMiddle.png",
 };
+
 let hexagramas = new Array();
 let count = -1;
 
 console.log(data["6"]);
 let btnAccept = document.getElementById("AceptarHexa");
+let borrarHexa = document.getElementById("borrarHexa");
+let reiniciar = document.getElementById("reiniciarHexa");
+let aleatorioHexa = document.getElementById("aleatorioHexa");
 
-console.log(btnAccept);
+aleatorioHexa.addEventListener("click", () => {
+  let hexa1 = document.getElementById("Hexa1");
+  let hexa2 = document.getElementById("Hexa2");
+  let hexa3 = document.getElementById("Hexa3");
+  hexa1.value = Math.floor(Math.random() * (3 - 2 + 1) + 2);
+  hexa2.value = Math.floor(Math.random() * (3 - 2 + 1) + 2);
+  hexa3.value = Math.floor(Math.random() * (3 - 2 + 1) + 2);
+});
+
+borrarHexa.addEventListener("click", () => {
+  hexagramas.pop(data[data.length - 1]);
+
+  let tableHexagrams = document.getElementById("tableHexagrams");
+  // console.log(tableHexagrams.lastChild);
+  tableHexagrams.removeChild(tableHexagrams.lastChild);
+});
+
+reiniciar.addEventListener("click", () => {
+  location.reload();
+});
+
+console.log(btnAccept, Math.floor(Math.random() * (3 - 2 + 1) + 2));
 btnAccept.addEventListener("click", function () {
   let hexa1 = parseInt(document.getElementById("Hexa1").value);
   let hexa2 = parseInt(document.getElementById("Hexa2").value);
@@ -62,7 +89,7 @@ function hexagramaMutante(suma) {
     contentImgsDiv.id = "contentImgs";
     contentImgsDiv.className = "contentImgs";
     tableHexagrams.appendChild(contentImgsDiv);
-    // let contentImgs = document.getElementById("contentImgs");
+    //creamos las imageens
     let img = document.createElement("img");
     let img2 = document.createElement("img");
     let img3 = document.createElement("img");
@@ -117,8 +144,6 @@ function hexagramaNormal(suma) {
     img.width = 190;
 
     contentImgsCompleteDiv.appendChild(img);
-    // contentImgsCompleteDiv.insertBefore(img, tableHexagrams.children[0]);
-    // console.log(tableHexagrams.childNodes);
   } else {
     let contentImgsDiv = document.createElement("div");
     contentImgsDiv.id = "contentImgs";
@@ -152,18 +177,112 @@ const comprobarHexagrama = () => {
   console.log(countHexagramas, "desde aqui");
   if (countHexagramas) {
     console.log("hay exagramas mutantes");
+    hayMutantes();
   } else {
-    noHayMutantes();
+    noHayMutantes(hexagramas);
   }
 };
 
 const noHayMutantes = () => {
   let contenidoHexagramas = document.getElementById("tableHexagrams");
+  let hexagramaEcho = contenidoHexagramas.cloneNode(true);
   let hexagramaListo = document.getElementById("hexagramaListo");
   let ok = document.getElementById("ok");
   hexagramaListo.style.display = "block";
   contenidoHexagramas.className = "tablaHexagramasNoMutantes";
+  btnAccept.disabled = true;
+  btnAccept.style.background = "grey";
   ok.addEventListener("click", () => {
     hexagramaListo.style.display = "none";
   });
+  showHexaResult(hexagramaEcho);
+};
+
+const hayMutantes = () => {
+  //desabilitando el boton de añadir nuevo hexa
+  btnAccept.disabled = true;
+  btnAccept.style.background = "grey";
+  borrarHexa.disabled = "true";
+  borrarHexa.style.background = "grey";
+
+  let contenidoHexagramas = document.getElementById("tableHexagrams");
+  let sigHexagramaBtn = document.getElementById("sigHexagramaBtn");
+  let contenTablaHexagram = document.getElementById("contenTablaHexagram");
+  sigHexagramaBtn.parentElement.style.display = "block";
+  //aqui clone el exagrama original para despues cambiarlle los estilos y asi generar un nuevo
+  let newHexagramaDiv = contenidoHexagramas.cloneNode(true);
+  let newHexagramaDivMutado = contenidoHexagramas.cloneNode(true);
+
+  sigHexagramaBtn.addEventListener("click", () => {
+    contenTablaHexagram.appendChild(newHexagramaDiv);
+    sigHexagramaBtn.parentElement.style.display = "none";
+    newHexagramaDiv.childNodes.forEach((nodo) => {
+      //si existen 3 imagenes
+      // console.log(nodo, "ando en nodos");
+      if (nodo.childNodes[1] && nodo.childNodes.length > 2) {
+        console.log(nodo, "ando en este nodo");
+        // nodo.childNodes[1].src = "";
+        nodo.childNodes[1].remove();
+      }
+    });
+    hexagramaMutado(contenTablaHexagram, newHexagramaDivMutado);
+  });
+};
+
+const hexagramaMutado = (padreNodo, hexaNoMutado) => {
+  console.log(padreNodo, hexaNoMutado, "desdeaca");
+  padreNodo.appendChild(hexaNoMutado);
+  hexaNoMutado.childNodes.forEach((nodo) => {
+    if (nodo.childNodes[1]) {
+      if (nodo.childNodes[1].src.split("/")[3].split(".")[0] == "x") {
+        // console.log("YEAA", nodo.childNodes[1]);
+        nodo.childNodes[1].previousSibling.src = "hexaComplete.png";
+        nodo.childNodes[1].previousSibling.style.width = "233px";
+        nodo.childNodes[1].previousSibling.style.margin = "auto";
+        nodo.childNodes[1].style.display = "none";
+        nodo.childNodes[1].nextSibling.style.display = "none";
+      }
+      if (nodo.childNodes[1].src.split("/")[3].split(".")[0] == "o") {
+        // nodo.childNodes[1].src = "";
+        nodo.childNodes[1].remove();
+      }
+    }
+  });
+  showHexaResult(hexaNoMutado);
+};
+
+const showHexaResult = (yaMutoHexagrama) => {
+  //yamutoHexagrama son mis hexgramas que voy a dividir 3x3
+  console.log(yaMutoHexagrama);
+  let fatherContetTableImgHexagrama = document.getElementById(
+    "fatherContetTableImgHexagrama"
+  );
+  fatherContetTableImgHexagrama.style.display = "flex";
+  //aqui insertare mis exagramas superior e inferior
+  let contentHexagramFinal = document.getElementById("contentHexagramFinal");
+  //aqui insertare 3x3 hexagrams que viene de mi arreglo yamutohexagramas
+  let tableHexagramsSuperior = document.getElementById(
+    "tableHexagramsSuperior"
+  );
+  let tableHexagramsInferior = document.getElementById(
+    "tableHexagramsInferiror"
+  );
+
+  //recorrer el arreglo de exagramas y los vamos  acopiar
+  yaMutoHexagrama.childNodes.forEach((node, index) => {
+    console.log(node, index);
+    //nodos Inferirores
+    if (index < 3) {
+      tableHexagramsInferior.appendChild(node.cloneNode(true));
+    } else {
+      tableHexagramsSuperior.appendChild(node.cloneNode(true));
+    }
+  });
+
+  let newNodoImg = document.createElement("div");
+  let newImg = document.createElement("img");
+  newNodoImg.className = "contetTableImgHexagrama";
+  newImg.src = "hexagramasTable.png";
+  newNodoImg.appendChild(newImg);
+  fatherContetTableImgHexagrama.appendChild(newNodoImg);
 };

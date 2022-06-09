@@ -235,7 +235,7 @@ const hexagramaMutado = (padreNodo, hexaNoMutado) => {
   hexaNoMutado.childNodes.forEach((nodo) => {
     if (nodo.childNodes[1]) {
       console.log("YEAA2", nodo.childNodes[1].src.split("/"));
-      if (nodo.childNodes[1].src.split("/")[9].split(".")[0] == "x") {
+      if (nodo.childNodes[1].src.split("/")[4].split(".")[0] == "x") {
         console.log("YEAA", nodo.childNodes[1]);
         nodo.childNodes[1].previousSibling.src = "hexaComplete.png";
         nodo.childNodes[1].previousSibling.style.width = "233px";
@@ -243,7 +243,7 @@ const hexagramaMutado = (padreNodo, hexaNoMutado) => {
         nodo.childNodes[1].style.display = "none";
         nodo.childNodes[1].nextSibling.style.display = "none";
       }
-      if (nodo.childNodes[1].src.split("/")[9].split(".")[0] == "o") {
+      if (nodo.childNodes[1].src.split("/")[4].split(".")[0] == "o") {
         // nodo.childNodes[1].src = "";
         nodo.childNodes[1].remove();
       }
